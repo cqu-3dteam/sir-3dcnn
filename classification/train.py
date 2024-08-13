@@ -23,13 +23,14 @@ test_dir = root + "sensor_data/test"
 writein = root + "results.txt"
 modelsave = root + 'results/model'
 # deform_idx = [] #str(deform_idx)
+# identification of different models
 p = "c3dL_"
 
 output_re = open(writein, 'a')
 output_re.write('\r\n')
 output_re.write(train_dir + '\n')
 
-
+# dataload
 def load_lc_data(path, indices=0, split=False):
     txt_Paths = glob.glob(os.path.join(path, '*.txt'))
     txt_Paths.sort()
@@ -91,7 +92,7 @@ def main(args):
     optimizer = torch.optim.SGD(net.parameters(), lr=args['lr'], momentum=args['momentum'], nesterov=True)
     loss_function = nn.CrossEntropyLoss()
     ## ---------------------- Dataload ---------------------- ##
-    # SAO
+    # optimized MTS after SAO
     optim_param = args['optim_param']
     indices = [3, 21, 9, 10, 14, 6, 0, 20, 7, 2, 13, 15, 12, 18, 4, 1, 16, 19, 8, 11, 17, 5]  # MAX
     indices = indices[:optim_param]
@@ -142,7 +143,7 @@ def main(args):
     for epoch in range(args['epochs']):
         net.train()  # net is the model vgg16
         running_loss = 0.0
-        train_bar = tqdm(train_loader)  # 查看的进度条
+        train_bar = tqdm(train_loader)
 
         for step, data in enumerate(train_bar):
             imgs, targets = data

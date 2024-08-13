@@ -4,7 +4,9 @@ import numpy as np
 from torchsummary import summary
 
 from deform.DeformableBlock3D import DeformConv3d
-
+"""
+The structure of C3D-Light
+"""
 class Flatten(nn.Module):
     def forward(self, input):
         return input.view(input.size(0), -1)
