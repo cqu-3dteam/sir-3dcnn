@@ -58,7 +58,7 @@ python sensor_array_optimization/SAO_LDA.py
 
 ### Spatiotemporal Information Representation
 ```bash
-python sensor_array_optimization/SAO_LDA.py
+python spatiotemporal_information_representation/SIA.py
 ```
 ### Classification
 
